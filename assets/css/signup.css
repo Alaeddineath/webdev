@@ -4,7 +4,6 @@ body {
   font-family: "Raleway", sans-serif;
   background-image: url("../img/hero-bg.jpg");
   background-size: cover;
-  background-position: center;
 }
 .header {
   background-color: rgba(53, 114, 160, 0.8);
