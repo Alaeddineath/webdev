@@ -1,3 +1,4 @@
+
 /**
 * Template Name: Squadfree - v4.11.0
 * Template URL: https://bootstrapmade.com/squadfree-free-bootstrap-template-creative/
@@ -1338,7 +1339,7 @@ justify-content:center;
 align-items:center;
 margin: 50px 0;
 }
-.contentt{
+.content{
   width:20%;
   margin:15px;
   box-sizing:bonder-box;
@@ -1351,12 +1352,12 @@ margin: 50px 0;
   transition:.4s;
   background:white;
 }
-.contentt.hover{
+.content.hover{
   box-shadow:0 3px 6px rgba(0,0,0,0.25),
   0   3px 6px rgba(0,0,0,0.22);
   transform: translate(0px, -8px);
 }
-img.gallery{width:200px;
+img {width:200px;
 height:200px;
 text-align:center;
 margin:0 auto;
