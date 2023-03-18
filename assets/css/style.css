@@ -417,8 +417,36 @@ h6 {
   background-size: cover;
   position: relative;
   margin-bottom: -90px;
+  animation: change 40s infinite ease-in-out;
 }
 
+@keyframes change{
+  0%
+  {
+      background-image: url(../img/hero-bg2.jpg);
+  }
+  12%
+  {
+      background-image: url(../img/1260824\ \(1\).jpg);
+  }
+  37%
+  {
+      background-image: url(../img/hero-bg.jpg);
+  }
+  62%
+  {
+      background-image: url(../img/799190.jpg);
+  }
+  88%
+  {
+      background-image: url(../img/islam-fersaoui-vEob3rMRUcQ-unsplash.jpg);
+  }
+  100%
+  {
+      background-image: url(../img/hero-bg2.jpg);
+  }
+
+} 
 #hero .hero-container {
   position: absolute;
   bottom: 0;
