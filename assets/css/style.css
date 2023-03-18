@@ -1356,7 +1356,7 @@ margin 50px 0;
   0   3px 6px rgba(0,0,0,0.22);
   transform: translate(0px, -8px);
 }
-img {width:200px;
+img.gallery{width:200px;
 height:200px;
 text-align:center;
 margin:0 auto;
