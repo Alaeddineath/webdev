@@ -33,8 +33,7 @@
   * Template Name: Squadfree - v4.11.0
   * Template URL: https://bootstrapmade.com/squadfree-free-bootstrap-template-creative/
   * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  * License: https://bootstrapmade.com/license/  ======================================================== -->
 </head>
 
 <body>
@@ -44,9 +43,9 @@
     <div class="container d-flex align-items-center justify-content-between position-relative">
 
       <div class="logo">
-        <h1 class="text-light"><a href="index.html"><span>RIHLAT-e</span></a></h1>
+        <h1 class="text-light"><a href="index.php"><span>RIHLAT-e</span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+        <!-- <a href="index.php"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
 
       <nav id="navbar" class="navbar">
@@ -56,8 +55,8 @@
           <li><a class="nav-link scrollto" href="#services">Services</a></li>
           <li><a class="nav-link scrollto" href="#team">Team</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          <a href="signup.html" class="singup-btn">Sing Up <i class="bx bx-chevron-right"></i></a>
-          <a href="login.html" class="singup-btn">Log in <i class="bx bx-chevron-right"></i></a>
+          <a href="signup.php" class="singup-btn">Sing Up <i class="bx bx-chevron-right"></i></a>
+          <a href="login.php" class="singup-btn">Log in <i class="bx bx-chevron-right"></i></a>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -210,7 +209,7 @@
           
             <div class="swiper-slide">
               <div class="testimonial-item">
-                <img src=" <?php echo $image1_url.'' ;?>" width="400" height="400">
+                <img src="<?php echo $image1_url.'width="300" height="300"' ;?>">
                 <br>
                 <p>
                   <strong><?php echo htmlspecialchars($travel_destination); ?></strong><br>
@@ -228,10 +227,9 @@
         </div>
 
       </div>
-      <input type="button" class="buttonn" value="view more !" href="all-trips.php">
+      <input type="button" class="buttonn" value="view more !">
     </section>
-
-    <!-- ======= Team Section ======= -->
+   
     <section id="team" class="team">
       <div class="container">
 
@@ -328,7 +326,7 @@
               <p>
                 Sidi Abdellah <br>
                 NY 535022, Algiers<br><br>
-                <strong>Phone: </strong>  +213 540444444<br>
+                <strong>Phone:</strong>  +213 540444444 <br>
                 <strong>Email: </strong> RIHALAT-E@ensia.edu.dz<br>
               </p>
               <div class="social-links mt-3">
@@ -385,7 +383,7 @@
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/squadfree-free-bootstrap-template-creative/ -->
-        Designed by <a href="https://github.com/ENSIA-AI/E-Tourism_Team_5.6.git">Team 5-6</a>
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
       </div>
     </div>
   </footer><!-- End Footer -->
