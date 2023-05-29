@@ -1,7 +1,70 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+    header('Location: index.php');
+    exit();
+}
+
+if (isset($_POST['logout'])) {
+    session_destroy();
+    header('Location: index.php');
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+/* Star icons */
+.fa {
+  display: inline-block;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Full star icon */
+.fa-star:before {
+  content: '\f005';
+}
+
+/* Empty star icon */
+.fa-star-o:before {
+  content: '\f006';
+}
+
+/* Half star icon */
+.fa-star-half-o:before {
+  content: '\f123';
+}
+
+/* Rating container */
+.content {
+  margin-bottom: 10px;
+}
+
+/* Rating stars */
+.content h3 {
+  color: #FFD700; /* Change this to the desired color for the stars */
+}
+
+/* Comment content */
+.content p {
+  margin: 0;
+}
+
+/* Comment date */
+.content h6 {
+  color: #888;
+  font-size: 12px;
+}
+</style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -45,19 +108,17 @@
 
       <div class="logo">
         <h1 class="text-light"><a href="loggedindex.php"><span>RIHLAT-e</span></a></h1>
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="loggedindex.php"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
 
       <nav id="navbar" class="navbar">
-        <ul>
+      <ul>
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">About Us</a></li>
           <li><a class="nav-link scrollto" href="#services">Services</a></li>
           <li><a class="nav-link scrollto" href="#team">Team</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          <a href="signup.php" class="singup-btn">Sing Up <i class="bx bx-chevron-right"></i></a>
-          <a href="login.php" class="singup-btn">Log in <i class="bx bx-chevron-right"></i></a>
+          <a href="logout.php" class="logout-btn">Log Out <i class="bx bx-chevron-right"></i></a>
+
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -143,16 +204,7 @@ $row= mysqli_fetch_assoc($result);
             <div class="portfolio-description">
               <h2>join us on this trip!</h2>
               <p>
-              <a href="trip-reservation.php?id=<?php echo $travel_id;?>" style="color:#2d3589;"><button type="submit"onclick="location.href='trip-reservation.php'"style="
-      margin-left: 46%;background-color: rgba(53, 114, 160, 0.8);
-      color: #fff;
-      padding: 10px;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      cursor: pointer;"
-      >Join Us Now !</button>
-    </section></a> 
+              <a href="trip-reservation.php?id=<?php echo $travel_id;?>" style="color:#2d3589;"><button type="submit" class="btn btn-primary" >join us now</a> 
               </p>
             </div>
           </div>
@@ -160,7 +212,94 @@ $row= mysqli_fetch_assoc($result);
         </div>
 
       </div>
-    </section><!-- End Portfolio Details Section -->
+    </section ><!-- End Portfolio Details Section -->
+    <h3>comments section</h3>
+    <section id="portfolio-details" class="portfolio-details">
+      <div class="portfolio-info">
+    <form id="comment-form" method="POST">
+  <div class="form-group">
+    <label for="comment">Comment:</label> <br> <br>
+    <textarea class="form-control" id="comment" name="comment"></textarea>
+  </div> <br> 
+  <div class="form-group">
+    <label for="rating">Rating:</label> <br> <br> 
+    <input type="number" class="form-control" id="rating" name="rating" min="1" max="5">
+  </div>
+  <br>
+  <button type="submit" class="btn btn-primary" name="comment">Submit</button>
+</form> </div></section>
+  <div id="response"></div>
+
+  <script>
+$(function() {
+              $('#comment-form').submit(function(event) {
+                event.preventDefault();
+                var formData = $(this).serialize();
+
+                $.ajax({
+                  url: 'process_comment.php?id=<?php echo $_GET['id'] ?>',
+                  method: 'POST',
+                  data: formData,
+                  success: function(response) {
+                    alert(response);
+                  }
+                });
+              });
+            });
+  </script>
+ <section>
+    <h3>Check all the comments!!</h3>
+    <div class="comments-section">
+        <?php
+        $query = "SELECT * FROM comment WHERE travel_plan_id=$travel_id";
+        if ($result = mysqli_query($conn, $query)) {
+            // Fetch one and one row
+            while ($row = mysqli_fetch_row($result)) {
+                $date = $row[1];
+                $content = $row[3];
+                $rating = $row[6];
+                ?>
+                <div class="content">
+                    <h3><?php echo getRatingStars($rating); ?></h3>
+                    <p><?php echo htmlspecialchars($content); ?> </p>
+                    <h6><?php echo htmlspecialchars($date); ?></h6>
+                </div>
+                <?php
+            }//end while
+            // Free result set
+            mysqli_free_result($result);
+        }// end if
+
+        function getRatingStars($rating) {
+            $starRating = "";
+            $fullStar = "<i class='fa fa-star'></i>";
+            $emptyStar = "<i class='fa fa-star-o'></i>";
+
+            // Determine the number of full stars
+            $fullStars = floor($rating);
+
+            // Add full stars
+            for ($i = 0; $i < $fullStars; $i++) {
+                $starRating .= $fullStar;
+            }
+
+            // Add half star if rating has decimal value of 0.5
+            if ($rating - $fullStars == 0.5) {
+                $starRating .= "<i class='fa fa-star-half-o'></i>";
+            }
+
+            // Add empty stars for remaining
+            $emptyStars = 5 - ceil($rating);
+            for ($i = 0; $i < $emptyStars; $i++) {
+                $starRating .= $emptyStar;
+            }
+
+            return $starRating;
+        }
+        ?>
+    </div>
+</section>
+
 
   </main><!-- End #main -->
 

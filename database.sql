@@ -85,8 +85,8 @@ CREATE TABLE request (
     budget DECIMAL(10, 2),
     traveldate DATE,
     travel_plan_suggestion VARCHAR(50),
-    CONSTRAINT Pk_activity PRIMARY KEY(user_ID, requested_destination)
-    CONSTRAINT fk_activity FOREIGN KEY (user_ID) REFERENCES user(user_ID) ON DELETE CASCADE,
+    CONSTRAINT Pk_activity PRIMARY KEY(user_ID, requested_destination),
+    CONSTRAINT fk_activity FOREIGN KEY (user_ID) REFERENCES user(user_ID) ON DELETE CASCADE
 );
 
 CREATE TABLE activity (
@@ -94,10 +94,7 @@ CREATE TABLE activity (
     activity_date DATE,
     activity_price  DECIMAL(10, 2),
     travel_plan_id INT(10),
-    name_destination VARCHAR(50),
-    CONSTRAINT fk_activity FOREIGN KEY (name_destination) REFERENCES destination(name_destination) ON DELETE CASCADE,
-    CONSTRAINT fk2_activity FOREIGN KEY (travel_plan_id) REFERENCES travel_plan(travel_id) ON DELETE CASCADE,
-    CONSTRAINT Pk_activity PRIMARY KEY(activity_name, travel_plan_id)
+    name_destination VARCHAR(50)
 );
 
 CREATE TABLE payment (

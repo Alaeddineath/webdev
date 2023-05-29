@@ -7,6 +7,7 @@
     <link href="assets/css/signup.css" rel="stylesheet">
 </head>
 <body>
+    
     <div class="header">
         <h1><a href="loggedindex.php">RIHLAT-e</a></h1>
     </div>

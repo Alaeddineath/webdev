@@ -56,6 +56,10 @@
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
           <a href="signup.php" class="singup-btn">Sing Up <i class="bx bx-chevron-right"></i></a>
           <a href="login.php" class="singup-btn">Log in <i class="bx bx-chevron-right"></i></a>
+          <br>
+          <br>
+
+          <a href="adminlogin.php" class="admin">ADMIN <i class="bx bx-chevron-right"></i></a>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->

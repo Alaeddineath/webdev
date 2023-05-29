@@ -24,12 +24,10 @@ if (isset($_POST['login'])) {
     mysqli_close($conn);
 }
 ?>
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Login Page</title>
-    <link rel="stylesheet" href="assets/css/login.css">
+    <link href="assets/css/login.css" rel="stylesheet" >
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,700&display=swap" rel="stylesheet">
 </head>
 <body>
