@@ -143,7 +143,16 @@ $row= mysqli_fetch_assoc($result);
             <div class="portfolio-description">
               <h2>join us on this trip!</h2>
               <p>
-              <a href="trip-reservation.php?id=<?php echo $travel_id;?>" style="color:#2d3589;"><button type="submit" name="submit">join us now</button></a> 
+              <a href="trip-reservation.php?id=<?php echo $travel_id;?>" style="color:#2d3589;"><button type="submit"onclick="location.href='trip-reservation.php'"style="
+      margin-left: 46%;background-color: rgba(53, 114, 160, 0.8);
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;"
+      >Join Us Now !</button>
+    </section></a> 
               </p>
             </div>
           </div>

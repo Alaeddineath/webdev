@@ -243,8 +243,15 @@ if (isset($_POST['logout'])) {
         </div>
 
       </div>
-        <button type="submit" name="submit" onclick="location.href='all-trips.php'"style="margin-left: 46%;">View More !</button>
-      
+    <button type="submit"onclick="location.href='all-trips.php'"style="
+      margin-left: 46%;background-color: rgba(53, 114, 160, 0.8);
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;"
+      >View More !</button>
     </section>
 
     <!-- ======= Team Section ======= -->
