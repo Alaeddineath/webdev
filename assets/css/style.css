@@ -1,13 +1,4 @@
-/**
-* Template Name: Squadfree - v4.11.0
-* Template URL: https://bootstrapmade.com/squadfree-free-bootstrap-template-creative/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
 
-/*--------------------------------------------------------------
-# General
---------------------------------------------------------------*/
 body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
@@ -52,6 +43,7 @@ h6 {
   border-radius: 50px;
   transition: all 0.4s;
 }
+
 .back-to-top i {
   font-size: 24px;
   color: #fff;
@@ -417,36 +409,8 @@ h6 {
   background-size: cover;
   position: relative;
   margin-bottom: -90px;
-  animation: change 40s infinite ease-in-out;
 }
 
-@keyframes change{
-  0%
-  {
-      background-image: url(../img/hero-bg2.jpg);
-  }
-  12%
-  {
-      background-image: url(../img/1260824\ \(1\).jpg);
-  }
-  37%
-  {
-      background-image: url(../img/hero-bg.jpg);
-  }
-  62%
-  {
-      background-image: url(../img/799190.jpg);
-  }
-  88%
-  {
-      background-image: url(../img/islam-fersaoui-vEob3rMRUcQ-unsplash.jpg);
-  }
-  100%
-  {
-      background-image: url(../img/hero-bg2.jpg);
-  }
-
-} 
 #hero .hero-container {
   position: absolute;
   bottom: 0;
@@ -702,7 +666,6 @@ section {
   }
 }
 
-
 /*--------------------------------------------------------------
 # Services
 --------------------------------------------------------------*/
@@ -858,6 +821,172 @@ section {
 
 .cta .cta-btn:hover {
   border-color: #fff;
+}
+
+/*--------------------------------------------------------------
+# Portfolio
+--------------------------------------------------------------*/
+.portfolio .portfolio-item {
+  margin-bottom: 30px;
+}
+
+.portfolio #portfolio-flters {
+  padding: 0;
+  margin: 0 auto 35px auto;
+  list-style: none;
+  text-align: center;
+  background: #ecf5f9;
+  border-radius: 50px;
+  padding: 2px 15px;
+}
+
+.portfolio #portfolio-flters li {
+  cursor: pointer;
+  display: inline-block;
+  padding: 10px 15px 8px 15px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #2f4d5a;
+  margin-bottom: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.portfolio #portfolio-flters li:hover,
+.portfolio #portfolio-flters li.filter-active {
+  color: #67b0d1;
+}
+
+.portfolio #portfolio-flters li:last-child {
+  margin-right: 0;
+}
+
+.portfolio .portfolio-wrap {
+  transition: 0.3s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.portfolio .portfolio-wrap::before {
+  content: "";
+  background: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  transition: all ease-in-out 0.3s;
+  z-index: 2;
+  opacity: 0;
+}
+
+.portfolio .portfolio-wrap .portfolio-links {
+  opacity: 1;
+  left: 0;
+  right: 0;
+  bottom: -60px;
+  z-index: 3;
+  position: absolute;
+  transition: all ease-in-out 0.3s;
+  display: flex;
+  justify-content: center;
+}
+
+.portfolio .portfolio-wrap .portfolio-links a {
+  color: #fff;
+  font-size: 28px;
+  text-align: center;
+  background: rgba(103, 176, 209, 0.75);
+  transition: 0.3s;
+  width: 50%;
+}
+
+.portfolio .portfolio-wrap .portfolio-links a:hover {
+  background: rgba(103, 176, 209, 0.95);
+}
+
+.portfolio .portfolio-wrap .portfolio-links a+a {
+  border-left: 1px solid #8ec4dd;
+}
+
+.portfolio .portfolio-wrap:hover::before {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 1;
+}
+
+.portfolio .portfolio-wrap:hover .portfolio-links {
+  opacity: 1;
+  bottom: 0;
+}
+
+/*--------------------------------------------------------------
+# Portfolio Details
+--------------------------------------------------------------*/
+.portfolio-details {
+  padding-top: 40px;
+}
+
+.portfolio-details .portfolio-details-slider img {
+  width: 100%;
+}
+
+.portfolio-details .portfolio-details-slider .swiper-pagination {
+  margin-top: 20px;
+  position: relative;
+}
+
+.portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background-color: #fff;
+  opacity: 1;
+  border: 1px solid #67b0d1;
+}
+
+.portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet-active {
+  background-color: #67b0d1;
+}
+
+.portfolio-details .portfolio-info {
+  padding: 30px;
+  box-shadow: 0px 0 30px rgba(47, 77, 90, 0.08);
+}
+
+.portfolio-details .portfolio-info h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.portfolio-details .portfolio-info ul {
+  list-style: none;
+  padding: 0;
+  font-size: 15px;
+}
+
+.portfolio-details .portfolio-info ul li+li {
+  margin-top: 10px;
+}
+
+.portfolio-details .portfolio-description {
+  padding-top: 30px;
+}
+
+.portfolio-details .portfolio-description h2 {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.portfolio-details .portfolio-description p {
+  padding: 0;
 }
 
 /*--------------------------------------------------------------
@@ -1332,15 +1461,21 @@ section {
     margin: -20px 0 30px 0;
   }
 }
-.gallery{
-  display:flex;
+.gallery1{display:flex;
 flex-wrap:wrap;
 width:100%;
 justify-content:center;
 align-items:center;
-margin: 50px;
+margin:50px 0;
 }
-.trips{
+.gallery2{display:flex;
+  flex-wrap:wrap;
+  width:100%;
+  justify-content:center;
+  align-items:center;
+  margin: 50px;
+  }
+.content{
   width:20%;
   margin:15px;
   box-sizing:bonder-box;
@@ -1353,12 +1488,12 @@ margin: 50px;
   transition:.4s;
   background:white;
 }
-.trips.hover{
+.content.hover{
   box-shadow:0 3px 6px rgba(0,0,0,0.25),
   0   3px 6px rgba(0,0,0,0.22);
   transform: translate(0px, -8px);
 }
-img {width:200px;
+img.img-trip {width:200px;
 height:200px;
 text-align:center;
 margin:0 auto;
@@ -1369,11 +1504,17 @@ display:block;
   margin-left: 40%;
 }
 
+.see-more{
+  padding: 8px;
+  color:white;
+  background-color: #272525;
+  border-radius: 15px;
+  font-size: medium;
+}
 button[type="submit"] {
   background-color: rgba(53, 114, 160, 0.8);
   color: #fff;
   padding: 10px;
-  margin-bottom: 10px;
   border: none;
   border-radius: 5px;
   font-size: 16px;
@@ -1382,9 +1523,4 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
   background-color: #2c5d7c;
-}
-.buttonn{
-  background-color: #2c5d7c;
-  color:#ffffff;
-  margin-left :880px;
 }
