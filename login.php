@@ -1,3 +1,26 @@
+<?php
+session_start();
+
+$error_message = '';
+
+if (isset($_POST['login'])) {
+    $conn = mysqli_connect("localhost", "root", "", "rihlate");
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $query = "SELECT * FROM user WHERE email='$email' AND password='$password'";
+    $result = mysqli_query($conn, $query);
+    if (mysqli_num_rows($result) == 1) {
+        // Set session variable and redirect to loggedindex.php
+        $user = mysqli_fetch_assoc($result);
+        $_SESSION['user_id'] = $user['id'];
+        header('Location: loggedindex.php');
+        exit;
+    } else {
+        $error_message = "Invalid email or password.";
+    }
+    mysqli_close($conn);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +31,7 @@
 </head>
 <body>
     <div class="header">
-     <h1><a href="index.html">RIHLAT-e</a></h1>
+     <h1><a href="index.php">RIHLAT-e</a></h1>
  </div>
     <div class="container">
         <form method="post">
@@ -18,25 +41,14 @@
             <label for="password">Password</label>
             <input type="password" id="password" name="password" required>
             <button type="submit" name="login">Login</button>
-            <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+            <p>Don't have an account? <a href="signup.php">Sign up</a></p>
         </form>
+        <?php if ($error_message !== '') { ?>
+            <div class="error-message">
+                <?php echo '<h1>' . $error_message . '</h1>'; ?>
+            </div>
+
+        <?php } ?>
     </div>
-    <?php
-    if (isset($_POST['login'])) {
-        $conn = mysqli_connect("localhost", "root", "", "rihlate");
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        $query = "SELECT * FROM user WHERE email='$email' AND password='$password'";
-        $result = mysqli_query($conn, $query);
-        if (mysqli_num_rows($result) == 1) {
-            // redirect to loggedindex.html
-            header('Location: loggedindex.html');
-            exit;
-        } else {
-            echo "<p class='error'>Invalid email or password.</p>";
-        }
-        mysqli_close($conn);
-    }
-    ?>
 </body>
 </html>

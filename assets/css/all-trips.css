@@ -80,9 +80,7 @@ body {
     background: rgba(54, 96, 159, 0.8);
   }
   
-  #header.header-transparent {
-    background: transparent;
-  }
+  
   
   #header.header-scrolled {
     background: rgba(53, 114, 160, 0.8);
@@ -150,7 +148,7 @@ body {
     font-family: "Raleway", sans-serif;
     font-size: 16px;
     font-weight: 700;
-    color: #fff;
+    color: black;
     white-space: nowrap;
     transition: 0.3s;
   }

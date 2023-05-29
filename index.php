@@ -1,11 +1,9 @@
-<!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>RIHLAT-e Bootstrap Template - Index</title>
+  <title>RIHLAT-e</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -44,9 +42,9 @@
     <div class="container d-flex align-items-center justify-content-between position-relative">
 
       <div class="logo">
-        <h1 class="text-light"><a href="index.html"><span>RIHLAT-e</span></a></h1>
+        <h1 class="text-light"><a href="index.php"><span>RIHLAT-e</span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+        <!-- <a href="index.php"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
 
       <nav id="navbar" class="navbar">
@@ -56,8 +54,8 @@
           <li><a class="nav-link scrollto" href="#services">Services</a></li>
           <li><a class="nav-link scrollto" href="#team">Team</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          <a href="signup.html" class="singup-btn">Sing Up <i class="bx bx-chevron-right"></i></a>
-          <a href="login.html" class="singup-btn">Log in <i class="bx bx-chevron-right"></i></a>
+          <a href="signup.php" class="singup-btn">Sing Up <i class="bx bx-chevron-right"></i></a>
+          <a href="login.php" class="singup-btn">Log in <i class="bx bx-chevron-right"></i></a>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -228,7 +226,9 @@
         </div>
 
       </div>
-      <input type="button" class="buttonn" value="view more !" href="all-trips.php">
+      
+        <button class="viewmore" type="submit" name="submit" onclick="location.href='signup.php'"style="margin-left: 46%;">View More !</button>
+      
     </section>
 
     <!-- ======= Team Section ======= -->

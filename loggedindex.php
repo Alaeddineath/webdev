@@ -1,3 +1,18 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+    header('Location: index.php');
+    exit();
+}
+
+if (isset($_POST['logout'])) {
+    session_destroy();
+    header('Location: index.php');
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,9 +59,9 @@
     <div class="container d-flex align-items-center justify-content-between position-relative">
 
       <div class="logo">
-        <h1 class="text-light"><a href="index.html"><span>RIHLAT-e</span></a></h1>
+        <h1 class="text-light"><a href="loggedindex.php"><span>RIHLAT-e</span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+        <!-- <a href="index.php"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
 
       <nav id="navbar" class="navbar">
@@ -56,8 +71,8 @@
           <li><a class="nav-link scrollto" href="#services">Services</a></li>
           <li><a class="nav-link scrollto" href="#team">Team</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          <a href="signup.php" class="singup-btn">Sing Up <i class="bx bx-chevron-right"></i></a>
-          <a href="login.php" class="singup-btn">Log in <i class="bx bx-chevron-right"></i></a>
+          <a href="logout.php" class="logout-btn">Log Out <i class="bx bx-chevron-right"></i></a>
+
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -174,57 +189,64 @@
       </div>
     </section><!-- End Services Section -->
 
-  <!-- ======= Portfolio Section ======= -->
-    <section id="portfolio" class="portfolio" style="background-color:rgb(249, 249, 250);">
-      <h1 class="sec__title">Browse our trips !</h1>
-      <div class="gallery" >
-        <div class="trips">
-            <img src="https://i.pinimg.com/originals/88/94/2b/88942b0152274f44c8ddb387c2880af5.jpg">
-            <h3>dellys</h3>
-            <p>discover dellys </p>
-            <h6>2000 DA</h6>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <br>
-            <button type="submit"class="see-more">see more</button>
+    <section id="testimonials" class="testimonials section-bg">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+          <h2>Browse our trips!</h2>
         </div>
 
-        <div class="trips">
-            <img src="https://i.pinimg.com/originals/a6/0c/a8/a60ca8ad0c87e453fb22b02f3fd5387e.jpg">
-            <h3>setif</h3>
-            <p>discover setif </p>
-            <h6>2300 DA</h6>
-            <span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star"></span>
-<br>
-            <button type="submit"class="see-more">see more</button>
-        </div>
+        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+          <div class="swiper-wrapper">
 
-        <div class="trips">
-            <img src="https://images.unsplash.com/photo-1630995451175-7dd119153add?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=327&q=80">
-            <h3>bejaia</h3>
-            <p>discover BEJAIA </p>
-            <h6>2000 DA</h6>
-            <span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star"></span>
-<br>
-          <button type="submit"class="see-more"><a href="trip-details.html">see more</a></button>
-        </div>
-         </div>
+        <?php 
+        $dbhost = 'localhost';
+        $dbuser = 'root';
+        $dbpass = '';
+        $dbname = 'rihlate';
+        
+        $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
       
+        $query = "SELECT* FROM travel_plan";
+        
+      
+        if ($result=mysqli_query($conn,$query))
+        {
+        // Fetch one and one row
+        while ($row=mysqli_fetch_row($result))
+        {
+        
+        $travel_name = $row[1];                          
+        $travel_date = $row[2];
+        $travel_destination = $row[9]; 
+        $image1_url=$row[10];
 
-    </div>
-     
-    </section><!-- End Portfolio Section -->
+        ?>
+          
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src=" <?php echo $image1_url.'' ;?>" width="400" height="400">
+                <br>
+                <p>
+                  <strong><?php echo htmlspecialchars($travel_destination); ?></strong><br>
+              </div>
+            </div><!-- End testimonial item -->
+        <?php
+        }
+               mysqli_free_result($result);
+               }// end if
+               
+               mysqli_close($conn);        
+           ?>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+        <button type="submit" name="submit" onclick="location.href='all-trips.php'"style="margin-left: 46%;">View More !</button>
+      
+    </section>
+
     <!-- ======= Team Section ======= -->
     <section id="team" class="team">
       <div class="container">

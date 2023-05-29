@@ -140,6 +140,12 @@ $row= mysqli_fetch_assoc($result);
               <?php echo $row['description'] ?> 
               </p>
             </div>
+            <div class="portfolio-description">
+              <h2>join us on this trip!</h2>
+              <p>
+              <a href="trip-reservation.php?id=<?php echo $travel_id;?>" style="color:#2d3589;">join us now</a> 
+              </p>
+            </div>
           </div>
 
         </div>
