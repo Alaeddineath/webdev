@@ -44,9 +44,9 @@
     <div class="container d-flex align-items-center justify-content-between position-relative">
 
       <div class="logo">
-        <h1 class="text-light"><a href="index.html"><span>RIHLAT-e</span></a></h1>
+        <h1 class="text-light"><a href="loggedindex.php"><span>RIHLAT-e</span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+        <!-- <a href="loggedindex.php"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
 
       <nav id="navbar" class="navbar">
@@ -56,8 +56,8 @@
           <li><a class="nav-link scrollto" href="#services">Services</a></li>
           <li><a class="nav-link scrollto" href="#team">Team</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          <a href="signup.html" class="singup-btn">Sing Up <i class="bx bx-chevron-right"></i></a>
-          <a href="login.html" class="singup-btn">Log in <i class="bx bx-chevron-right"></i></a>
+          <a href="signup.php" class="singup-btn">Sing Up <i class="bx bx-chevron-right"></i></a>
+          <a href="login.php" class="singup-btn">Log in <i class="bx bx-chevron-right"></i></a>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -88,8 +88,8 @@ $row= mysqli_fetch_assoc($result);
         <div class="d-flex justify-content-between align-items-center">
           <h2>trip details</h2>
           <ol>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="portfolio.html">trips</a></li>
+            <li><a href="loggedindex.php">Home</a></li>
+            <li><a href="all-trips.php">trips</a></li>
             <li>trip details</li>
           </ol>
         </div>
@@ -138,6 +138,12 @@ $row= mysqli_fetch_assoc($result);
               <h2>more details about this trip</h2>
               <p>
               <?php echo $row['description'] ?> 
+              </p>
+            </div>
+            <div class="portfolio-description">
+              <h2>join us on this trip!</h2>
+              <p>
+              <a href="trip-reservation.php?id=<?php echo $travel_id;?>" style="color:#2d3589;"><button type="submit" name="submit">join us now</button></a> 
               </p>
             </div>
           </div>

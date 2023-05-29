@@ -1,9 +1,26 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+    header('Location: index.php');
+    exit();
+}
+
+if (isset($_POST['logout'])) {
+    session_destroy();
+    header('Location: index.php');
+    exit();
+}
+?>
+
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>RIHLAT-e</title>
+  <title>RIHLAT-e Bootstrap Template - Index</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -42,7 +59,7 @@
     <div class="container d-flex align-items-center justify-content-between position-relative">
 
       <div class="logo">
-        <h1 class="text-light"><a href="index.php"><span>RIHLAT-e</span></a></h1>
+        <h1 class="text-light"><a href="loggedindex.php"><span>RIHLAT-e</span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.php"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
@@ -54,8 +71,8 @@
           <li><a class="nav-link scrollto" href="#services">Services</a></li>
           <li><a class="nav-link scrollto" href="#team">Team</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          <a href="signup.php" class="singup-btn">Sing Up <i class="bx bx-chevron-right"></i></a>
-          <a href="login.php" class="singup-btn">Log in <i class="bx bx-chevron-right"></i></a>
+          <a href="logout.php" class="logout-btn">Log Out <i class="bx bx-chevron-right"></i></a>
+
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -226,8 +243,7 @@
         </div>
 
       </div>
-      
-      <button class="viewmore" type="submit" name="submit" onclick="location.href='login.php'"style="margin-left: 46%;">View More !</button>
+        <button type="submit" name="submit" onclick="location.href='all-trips.php'"style="margin-left: 46%;">View More !</button>
       
     </section>
 
