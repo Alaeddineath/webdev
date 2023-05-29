@@ -1,0 +1,17 @@
+IMPORTANT :
+
+I only uplpaded the admin folder , It's working fine in here .
+I have the old index so m not gonna modify the one that's already pushed , so for the one who's working on the new index , plz make an admin login buttom , or link and link it to "admin/adminlogin.php"
+
+here are my contributes: 
+ 
+======db======
+added the employee table
+
+=====functionalities====
+-login, for both ceo and employee .
+-implemented the session and the logout buttom .
+-delete , create and update for :users , hotels , guides, travelplans, destinations, reservations, activities 
+-added the employee table for ceo and its functionalities .
+-changed the icons as well, of the sidebar and the dashboard.
+-dashboard implementation, I just made added the number of rows in each table .
